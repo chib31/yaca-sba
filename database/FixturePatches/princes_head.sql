@@ -1,5 +1,5 @@
 WITH f AS (INSERT INTO fixture VALUES
-  (default,'20/07/2019',(SELECT id FROM opposition WHERE LOWER(name) LIKE '%princes head%'),1,'Richmond Green','Limited Overs',35,default,TRUE,FALSE,'lost')
+  (default,'2019-07-20',(SELECT id FROM opposition WHERE LOWER(name) LIKE '%princes head%'),1,'Richmond Green','Limited Overs',35,default,TRUE,FALSE,'lost')
 RETURNING id),
 
 i AS (INSERT INTO innings VALUES

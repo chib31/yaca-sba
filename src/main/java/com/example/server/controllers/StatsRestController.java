@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController()
-@CrossOrigin(origins = "http://localhost:8080", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:8080, https://gracious-roentgen-f98064.netlify.com/", maxAge = 3600)
 @RequestMapping("/api")
 public class StatsRestController {
 

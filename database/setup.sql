@@ -10,8 +10,8 @@ DROP TABLE IF EXISTS opposition CASCADE;
 DROP TABLE IF EXISTS constant CASCADE;
 
 -- Drop all types
-DROP TYPE result_type;
-DROP TYPE wicket_type;
+DROP TYPE IF EXISTS result_type;
+DROP TYPE IF EXISTS wicket_type;
 
 -----------------------------------------------
 
