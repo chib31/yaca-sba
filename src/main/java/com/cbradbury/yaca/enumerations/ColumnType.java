@@ -1,4 +1,4 @@
-package com.example.server.enumerations;
+package com.cbradbury.yaca.enumerations;
 
 public enum ColumnType {
   DB_COLUMN_RAW, // exists as a column in the database, no modification required

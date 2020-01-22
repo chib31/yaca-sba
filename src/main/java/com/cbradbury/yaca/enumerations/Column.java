@@ -1,14 +1,13 @@
-package com.example.server.enumerations;
+package com.cbradbury.yaca.enumerations;
 
-import com.example.server.utils.Utils;
+import com.cbradbury.yaca.utils.DataModifier;
+import com.cbradbury.yaca.utils.Utils;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import static com.example.server.enumerations.AggregateType.*;
-import static com.example.server.enumerations.ColumnType.*;
-import static com.example.server.enumerations.DisplayType.*;
-import static com.example.server.enumerations.FilterType.*;
-import static com.example.server.enumerations.SortType.*;
-import static com.example.server.utils.DataModifier.*;
+import static com.cbradbury.yaca.enumerations.AggregateType.*;
+import static com.cbradbury.yaca.enumerations.ColumnType.*;
+import static com.cbradbury.yaca.enumerations.DisplayType.*;
+import static com.cbradbury.yaca.enumerations.FilterType.*;
 
 public enum Column {
   PLAYER_NAME(
@@ -17,37 +16,37 @@ public enum Column {
       AGG_GROUPABLE,
       ALWAYS_SHOW,
       TEXT_FILTER,
-      ASC
+      SortType.ASC
   ),
   RUNS(
       AGG_SUM,
       OPTIONAL_SHOW,
       NUM_FILTER,
-      DESC
+      SortType.DESC
   ),
   DELIVERIES(
       AGG_SUM,
       OPTIONAL_SHOW,
       NUM_FILTER,
-      DESC
+      SortType.DESC
   ),
   INNINGS(
       AGG_COUNT_ALL,
       OPTIONAL_SHOW,
       NUM_FILTER,
-      DESC
+      SortType.DESC
   ),
   FOURS(
       AGG_SUM,
       OPTIONAL_SHOW,
       NUM_FILTER,
-      DESC
+      SortType.DESC
   ),
   SIXES(
       AGG_SUM,
       OPTIONAL_SHOW,
       NUM_FILTER,
-      DESC
+      SortType.DESC
   ),
   WICKET_TYPE(
       "wicket_type",
@@ -56,11 +55,11 @@ public enum Column {
       AGG_GROUPABLE,
       OPTIONAL_SHOW,
       TEXT_FILTER,
-      NO_SORT
+      SortType.NO_SORT
   ) {
     @Override
     public ObjectNode createData(ObjectNode on) {
-      return addWicketDisplayData(on, this.key);
+      return DataModifier.addWicketDisplayData(on, this.key);
     }
   },
   STRIKE_RATE_BAT(
@@ -70,11 +69,11 @@ public enum Column {
       NO_AGG,
       OPTIONAL_SHOW,
       NUM_FILTER,
-      DESC
+      SortType.DESC
   ) {
     @Override
     public ObjectNode createData(ObjectNode on) {
-      return addStrikeRateBatData(on, this.key);
+      return DataModifier.addStrikeRateBatData(on, this.key);
     }
   },
   STRIKE_RATE_BOWL(
@@ -84,27 +83,27 @@ public enum Column {
       NO_AGG,
       OPTIONAL_SHOW,
       NUM_FILTER,
-      DESC
+      SortType.DESC
   ) {
     @Override
     public ObjectNode createData(ObjectNode on) {
-      return addStrikeRateBowlData(on, this.key);
+      return DataModifier.addStrikeRateBowlData(on, this.key);
     }
   },
   TEAM_TOTAL(
       AGG_SUM,
       ALWAYS_HIDE,
       NO_FILTER,
-      NO_SORT
+      SortType.NO_SORT
   ),
   PERCENT_TOTAL_VALUE(
       "percent_total_value",
       DERIVED_IN_APP,
-      DESC
+      SortType.DESC
   ) {
     @Override
     public ObjectNode createData(ObjectNode on) {
-      return addPercentTotalValueData(on, this.key);
+      return DataModifier.addPercentTotalValueData(on, this.key);
     }
   },
   PERCENT_TOTAL_DISPLAY(
@@ -114,19 +113,19 @@ public enum Column {
       NO_AGG,
       OPTIONAL_HIDE,
       NUM_FILTER,
-      DESC,
+      SortType.DESC,
       "percent_total_value"
   ) {
     @Override
     public ObjectNode createData(ObjectNode on) {
-      return addPercentTotalDisplayData(on, this.key);
+      return DataModifier.addPercentTotalDisplayData(on, this.key);
     }
   },
   POSITION(
       NO_AGG,
       OPTIONAL_HIDE,
       NUM_FILTER,
-      ASC
+      SortType.ASC
   ),
   DATE(
       "date",
@@ -134,13 +133,13 @@ public enum Column {
       NO_AGG,
       ALWAYS_HIDE,
       NO_FILTER,
-      NO_SORT
+      SortType.NO_SORT
   ),
   OPPOSITION(
       AGG_GROUPABLE,
       ALWAYS_HIDE,
       TEXT_FILTER,
-      NO_SORT
+      SortType.NO_SORT
   ),
   FIXTURE(
       "fixture",
@@ -149,7 +148,7 @@ public enum Column {
       NO_AGG,
       OPTIONAL_HIDE,
       NO_FILTER,
-      ASC
+      SortType.ASC
   ),
   OVERS(
       "overs",
@@ -158,13 +157,13 @@ public enum Column {
       NO_AGG,
       OPTIONAL_SHOW,
       NO_FILTER,
-      DESC
+      SortType.DESC
   ),
   MAIDENS(
       AGG_SUM,
       OPTIONAL_HIDE,
       NUM_FILTER,
-      DESC
+      SortType.DESC
   ),
   WICKETS_BATTING(
       "wicket",
@@ -172,7 +171,7 @@ public enum Column {
       AGG_SUM,
       OPTIONAL_SHOW,
       NUM_FILTER,
-      DESC
+      SortType.DESC
   ),
   WICKETS_BOWLING(
       "wickets",
@@ -180,19 +179,19 @@ public enum Column {
       AGG_SUM,
       OPTIONAL_SHOW,
       NUM_FILTER,
-      DESC
+      SortType.DESC
   ),
   WIDES(
       AGG_SUM,
       OPTIONAL_HIDE,
       NUM_FILTER,
-      DESC
+      SortType.DESC
   ),
   NO_BALLS(
       AGG_SUM,
       OPTIONAL_HIDE,
       NUM_FILTER,
-      DESC
+      SortType.DESC
   ),
   ECONOMY(
       "economy",
@@ -201,21 +200,21 @@ public enum Column {
       NO_AGG,
       OPTIONAL_SHOW,
       NUM_FILTER,
-      ASC
+      SortType.ASC
   ) {
     @Override
     public ObjectNode createData(ObjectNode on) {
-      return addEconomyData(on, this.key);
+      return DataModifier.addEconomyData(on, this.key);
     }
   },
   AVERAGE_BAT_VALUE(
       "average_bat_value",
       DERIVED_IN_APP,
-      DESC
+      SortType.DESC
   ) {
     @Override
     public ObjectNode createData(ObjectNode on) {
-      return addAverageBatValueData(on, this.key);
+      return DataModifier.addAverageBatValueData(on, this.key);
     }
   },
   AVERAGE_BAT_DISPLAY(
@@ -225,22 +224,22 @@ public enum Column {
       NO_AGG,
       OPTIONAL_SHOW,
       NUM_FILTER,
-      DESC,
+      SortType.DESC,
       "average_bat_value"
   ) {
     @Override
     public ObjectNode createData(ObjectNode on) {
-      return addAverageBatDisplayData(on, this.key);
+      return DataModifier.addAverageBatDisplayData(on, this.key);
     }
   },
   AVERAGE_BOWL_VALUE(
       "average_bowl_value",
       DERIVED_IN_APP,
-      ASC
+      SortType.ASC
   ) {
     @Override
     public ObjectNode createData(ObjectNode on) {
-      return addAverageBowlValueData(on, this.key);
+      return DataModifier.addAverageBowlValueData(on, this.key);
     }
   },
   AVERAGE_BOWL_DISPLAY(
@@ -250,12 +249,12 @@ public enum Column {
       NO_AGG,
       OPTIONAL_SHOW,
       NUM_FILTER,
-      DESC,
+      SortType.DESC,
       "average_bowl_value"
   ) {
     @Override
     public ObjectNode createData(ObjectNode on) {
-      return addAverageBowlDisplayData(on, this.key);
+      return DataModifier.addAverageBowlDisplayData(on, this.key);
     }
   },
   INDEX(
@@ -265,7 +264,7 @@ public enum Column {
       NO_AGG,
       ALWAYS_SHOW,
       NO_FILTER,
-      NO_SORT
+      SortType.NO_SORT
   ),
   GROUP_TERM(
       "group_term",
@@ -273,7 +272,7 @@ public enum Column {
       NO_AGG,
       ALWAYS_SHOW,
       TEXT_FILTER,
-      ASC
+      SortType.ASC
   );
 
   public final String key;

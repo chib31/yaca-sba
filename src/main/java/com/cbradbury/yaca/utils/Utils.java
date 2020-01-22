@@ -1,8 +1,8 @@
-package com.example.server.utils;
+package com.cbradbury.yaca.utils;
 
-import com.example.server.enumerations.Column;
-import com.example.server.enumerations.Result;
-import com.example.server.enumerations.WicketType;
+import com.cbradbury.yaca.enumerations.Column;
+import com.cbradbury.yaca.enumerations.Result;
+import com.cbradbury.yaca.enumerations.WicketType;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;

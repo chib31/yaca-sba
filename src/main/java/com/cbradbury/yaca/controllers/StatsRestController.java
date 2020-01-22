@@ -1,9 +1,9 @@
-package com.example.server.controllers;
+package com.cbradbury.yaca.controllers;
 
-import com.example.server.entities.Report;
-import com.example.server.enumerations.Column;
-import com.example.server.enumerations.ReportType;
-import com.example.server.services.ReportService;
+import com.cbradbury.yaca.enumerations.Column;
+import com.cbradbury.yaca.entities.Report;
+import com.cbradbury.yaca.enumerations.ReportType;
+import com.cbradbury.yaca.services.ReportService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

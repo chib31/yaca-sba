@@ -1,7 +1,7 @@
-package com.example.server.services;
+package com.cbradbury.yaca.services;
 
-import com.example.server.entities.Report;
-import com.example.server.enumerations.*;
+import com.cbradbury.yaca.entities.Report;
+import com.cbradbury.yaca.enumerations.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.example.server.enumerations.ColumnType.*;
-import static com.example.server.utils.Utils.unCamel;
+import static com.cbradbury.yaca.enumerations.ColumnType.*;
 
 @Service
 public class ReportService {

@@ -1,4 +1,4 @@
-package com.example.server.enumerations;
+package com.cbradbury.yaca.enumerations;
 
 public enum FilterType {
   TEXT_FILTER,

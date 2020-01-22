@@ -1,4 +1,4 @@
-package com.example.server.entities;
+package com.cbradbury.yaca.entities;
 
 import lombok.Data;
 
