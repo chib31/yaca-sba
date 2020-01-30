@@ -25,6 +25,8 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
     implementation 'javax.json:javax.json-api:1.0'
     implementation 'org.glassfish:javax.json:1.0.4'
     implementation 'org.apache.commons:commons-lang3:3.4'
@@ -35,4 +37,24 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+bootRun {
+    main = 'com.cbradbury.yaca.Application'
+    dependsOn frontendAssetBuild
+}
+
+task frontendAssetBuild(type: Exec) {
+    //This task should be marked as out of date whenever a frontend asset is modified (otherwise it can be skipped)
+    inputs.files(fileTree('.') {
+        include '*.js'
+        include 'src/main/frontend/**'
+    })
+    outputs.files(fileTree('src/main/resources/static/dist'))
+
+    if (System.properties['os.name'].toLowerCase().contains('windows')) {
+        commandLine 'npm.cmd', 'run', 'build'
+    } else {
+        commandLine 'npm', 'run', 'build'
+    }
 }
